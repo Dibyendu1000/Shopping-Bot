@@ -14,7 +14,7 @@ def get_website():
     if(ch==1):
         ask_website='flipkart.com'
     elif(ch==2):
-        print("Service Not Yet available")
+        pg.alert(text='Service Not Available Yet !', title='Error', button='OK')
         get_website()
     elif(ch==3):
         pass
@@ -25,7 +25,10 @@ def get_website():
 
 def hello():
     pg.alert(text='Time Lef Must be greater than 5s', title='Time Left Warning', button='OK')
-    ask_website=get_website()
+    try:
+        ask_website=get_website()
+    except UnboundLocalError:
+        return
     ask_product=input("Enter product (For best results enter exact name):")
     ask_time=tuple(map(float,input("Enter Time Left:").split(" ")))
     dest=tinsec(ask_time[0],ask_time[1],ask_time[2])
